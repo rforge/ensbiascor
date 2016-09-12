@@ -1,0 +1,12 @@
+Package: ensbiascoR
+Title: Resampling bias correction for large initial condition ensembles
+Version: 0.0.1.1000
+Authors@R: c(person("Sebastian", "Sippel", , "ssippel@bgc-jena.mpg.de", role = c("aut", "cre")))
+Author: Sebastian Sippel [aut, cre]
+Maintainer: Sebastian Sippel <ssippel@bgc-jena.mpg.de>
+Description: An implementation of a resampling-based bias correction procedure for large ensemble simulations (e.g. http://www.climateprediction.net) as presented in Sippel et al (2016) <doi:10.5194/esd-7-71-2016>.
+Depends:
+    R (>= 2.7.0)
+License: GPL-2
+LazyData: true
+Imports: stats, zoo
