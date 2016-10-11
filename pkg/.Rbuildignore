@@ -4,3 +4,4 @@ data-raw/Fig1_Fig3_evaluate_bias_correction_areamean_TESTNEW.R
 data-raw/make_various_plots.R
 data-raw/prepare_data_land_coupling.R
 data-raw/prepare_data_Sippel_etal_2016_ESD.R
+data-raw/prepare_data_Sippel_etal_2016_BAMS.R

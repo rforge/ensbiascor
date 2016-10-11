@@ -2,12 +2,33 @@
 % Please edit documentation in R/get.percentile.transfer.function.R
 \name{quality.control.ensemble}
 \alias{quality.control.ensemble}
-\title{A function to derive a percentile transfer function}
+\title{A function to control the reduction of sample size in the resampled ensemble}
 \usage{
-quality.control.ensemble(transfer.function, percentile.ranges = seq(from = 0,
-  to = 1, by = 0.1))
+quality.control.ensemble(transfer.function, percentile.ranges = seq(from=0, to=1, by = 0.1))
+}
+\arguments{
+\item{transfer.function}{Percentile transfer function as obtained by get.percentile.transfer.function()}
+
+\item{percentile.ranges}{Percentile ranges in which the change in sample size should be checked}
+}
+\value{
+A vector that specifies the percent change in ensemble size induced by resampling
 }
 \description{
-A function to derive a percentile transfer function
+Checks for any given range of percentiles by how much the ensemble size is reduced by resampling
+}
+\examples{
+data(ensbiascor.example1)
+cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascor.example1$obs.data$Tair, mod.grid.cell = ensbiascor.example1$mod.data$Tair)
+percentile.ranges = seq(0, 1, 0.1)
+text = c("< 10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "> 90")
+percentiles.areamean = quality.control.ensemble(transfer.function = cur.transfer.function, percentile.ranges)
+barplot(percentiles.areamean, names = text, ylim = c(0, 2) * 100, xlab = "Observations - Percentiles", ylab = "Relative change in sample size [\%]")
+}
+\author{
+Sebastian Sippel
+}
+\references{
+Sippel, S., Otto, F. E. L., Forkel, M., Allen, M. R., Guillod, B. P., Heimann, M., Reichstein, M., Seneviratne, S. I., Thonicke, K. & Mahecha, M. D. (2016) A novel bias correction methodology for climate impact simulations. Earth System Dynamics, 7, 71-88. doi:10.5194/esd-7-71-2016.
 }
 

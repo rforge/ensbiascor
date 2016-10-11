@@ -229,5 +229,10 @@ ensbiascor.example1 = list(obs.data, mod.data)
 names(ensbiascor.example1) = c("obs.data", "mod.data")
 save(list=c("ensbiascor.example1"), file="/Users/ssippel/code/R_packages/ensbiascoR/ensbiascoR/pkg/data/ensbiascor.example1.RData")
 
+load("/Users/ssippel/code/R_packages/ensbiascoR/ensbiascoR/pkg/data/ensbiascor.example1.RData")
+ensbiascoR.example1 = ensbiascor.example1
+save(list=c("ensbiascoR.example1"), file="/Users/ssippel/code/R_packages/ensbiascoR/ensbiascoR/pkg/data/ensbiascoR.example1.RData")
+
+
 
 

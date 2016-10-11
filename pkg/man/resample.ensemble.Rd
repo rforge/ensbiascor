@@ -2,25 +2,44 @@
 % Please edit documentation in R/get.percentile.transfer.function.R
 \name{resample.ensemble}
 \alias{resample.ensemble}
-\title{A function to resample a large ensemble from a spline-based transfer function}
+\title{A function to resample a large ensemble simulation}
 \usage{
-resample.ensemble(obs.grid.cell, mod.grid.cell, n.sample=10000)
+resample.ensemble(mod.grid.cell, transfer.function, replacement = T, sample.size = 1500, quantile.range = c(0,1), bootstrap.resampling = NULL, search.radius = NA)
 }
 \arguments{
 \item{mod.grid.cell}{A numeric vector of simulated values}
 
-\item{obs.grid.cell}{A numeric vector of observed values}
+\item{transfer.function}{Percentile transfer function as obtained by get.percentile.transfer.function()}
 
-\item{n.sample}{Sample size}
+\item{replacement}{A binary variable, if TRUE resampling is performed with replacement (ensemble members might be chosen multiple time), if not resampling is performed without replacement (possibly strong reduction in sample size)}
+
+\item{quantile.range}{Vector with the quantile range of the observations to be resampled. Default is to c(0,1), i.e. the entire distribution is resampled.}
+
+\item{bootstrap.resampling}{How many time should the resampling algorithm be run? Default is NULL, i.e. the algorithm is run only once.}
+
+\item{search.radius}{Only relevant if resampling is run without replacement. Number that defines the "search radius" (in original units) around each resampled observation should be searched for ensemble members.}
+
+\item{n.sample}{Sample size for resampling the ensemble}
 }
 \value{
-XYZ
+A vector of indices of resampled ensemble members.
 }
 \description{
-Resamples a large ensemble from a spline-based transfer function
+Resamples a very large ensemble of model simulations based on a given percentile transfer function
 }
 \details{
-Calculates a transfer function between percentile of observed / simulated distributions. The transfer function is based on Hermite splines and a Gaussian kernel is fitted to observed data.
+Calculates a transfer function between percentile of observed / simulated distributions. The transfer function is based on Hermite splines and a Gaussian kernel is
+fitted to observed and simulated data. Resampling is conducted either with replacement
+(i.e. one ensemble member might be chosen multiple times), or without replacement (i.e. severe constraint on sample size).
+Resampling with replacement resamples sample.size times based on the transfer function and retains the numerically closest member of the ensemble.
+Resampling without replacement considers all ensemble members that are within a distance given by search.radius to the resampled value given by the transfer functions,
+and chooses randomly between these members. Resampling stops as soon as no ensemble members within search.radius are left.
+}
+\examples{
+data(ensbiascor.example1)
+cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascor.example1$obs.data$Tair, mod.grid.cell = ensbiascor.example1$mod.data$Tair)
+resample.idx_replacement = resample.ensemble(mod.grid.cell = ensbiascor.example1$mod.data$Tair, transfer.function= cur.transfer.function, replacement = T, sample.size=10000)
+resample.idx_no_replacement = resample.ensemble(mod.grid.cell = ensbiascor.example1$mod.data$Tair, transfer.function= cur.transfer.function, replacement = F, sample.size=1500, search.radius = 0.5)
 }
 \author{
 Sebastian Sippel

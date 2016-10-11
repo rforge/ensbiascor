@@ -11,16 +11,25 @@ get.percentile.transfer.function(obs.grid.cell, mod.grid.cell, n.sample=10000)
 
 \item{mod.grid.cell}{A numeric vector of simulated values}
 
-\item{n.sample}{Sample size}
+\item{n.sample}{Sample size for resampling the fitted kernels to compute the transfer function}
 }
 \value{
-XYZ
+A transfer function
 }
 \description{
-Calculates a transfer function between percentile of observed / simulated distributions
+Calculates a transfer function between percentiles of observed and simulated distributions
 }
 \details{
-Calculates a transfer function between percentile of observed / simulated distributions. The transfer function is based on Hermite splines and a Gaussian kernel is fitted to observed data.
+Calculates a transfer function between percentile of observed / simulated distributions. The transfer function is based on Hermite splines and a Gaussian kernel is
+fitted to observed and simulated data.
+}
+\examples{
+data(ensbiascor.example1)
+cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascor.example1$obs.data$Tair, mod.grid.cell = ensbiascor.example1$mod.data$Tair)
+plot(x = kernel.quantiles, y = cur.transfer.function(kernel.quantiles), xlab="Observations - CDF", ylab="Model Ensemble - CDF", bty="n", xlim = c(0,1), ylim=c(0, 1), type="n")
+lines(x = kernel.quantiles, y = cur.transfer.function(kernel.quantiles), col="red")
+lines(x=c(-10^6, 10^6), y=c(-10^6,10^6), col="darkgray", lwd = 2)
+legend("topleft", c("Hermite Splines"), bty='n', lty=1, col="red")
 }
 \author{
 Sebastian Sippel
