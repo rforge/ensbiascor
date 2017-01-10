@@ -9,3 +9,4 @@ Depends:
     R (>= 2.7.0)
 License: GPL-2
 Imports: stats, KernSmooth
+LazyData: true
