@@ -51,7 +51,7 @@ Sippel, S., Otto, F. E. L., Forkel, M., Allen, M. R., Guillod, B. P., Heimann, M
 ![](illu_ensbiascor.pdf)
 
 <p> <h4> Installation and Usage </h4>
-To install the most recent version of ensbiascor in R: <br><b>install.packages("ensbiascor", repos="http://R-Forge.R-project.org")</b><br>
+To install the most recent version of ensbiascor in R: <br><b>install.packages('ensbiascoR', repos='http://R-Forge.R-project.org', type='source')</b><br>
 
 <p>
 If you use <em>ensbiascoR</em> in scientific publications, please cite:
