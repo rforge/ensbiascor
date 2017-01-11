@@ -17,7 +17,7 @@
 #' @keywords datasets
 #' @examples 
 #' data(ensbiascoR.example1)
-#' @source Sippel, S., Otto, F. E. L., Forkel, M., Allen, M. R., Guillod, B. P., Heimann, M., Reichstein, M., Seneviratne, S. I., Thonicke, K. & Mahecha, M. D. (2016) A novel bias correction methodology for climate impact simulations. Earth System Dynamics, 7, 71-88. doi:10.5194/esd-7-71-2016.
+#' @source Sippel, S., Otto, F. E. L., Forkel, M., Allen, M. R., Guillod, B. P., Heimann, M., Reichstein, M., Seneviratne, S. I., Thonicke, K., and Mahecha, M. D. (2016) A novel bias correction methodology for climate impact simulations. Earth System Dynamics, 7, 71-88. doi:10.5194/esd-7-71-2016.
 "ensbiascoR.example1"
 
 
@@ -34,6 +34,6 @@
 #' @keywords datasets
 #' @examples 
 #' data(ensbiascoR.example2)
-#' @source Will follow soon.
+#' @source Sippel, S., Otto, F. E. L., Flach, M., and van Oldenborgh, G. J. (2016). The Role of  Anthropogenic Warming in 2015 Centra European Heat Waves. In Herring, S. C., Hoell, A., Hoerling, M. P., Kossin, J. P., Schreck III, C. J., and Stott, P. A. (Eds.), Explaining Extremes of 2015 from a Climate Perspective. Bull. Amer. Meteor. Soc., 97(12), S51–S56. doi:10.1175/BAMS-D-16-0149.
 "ensbiascoR.example2"
 

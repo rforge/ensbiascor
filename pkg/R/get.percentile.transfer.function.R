@@ -15,10 +15,10 @@
 #' @references Sippel, S., Otto, F. E. L., Forkel, M., Allen, M. R., Guillod, B. P., Heimann, M., Reichstein, M., Seneviratne, S. I., Thonicke, K. & Mahecha, M. D. (2016) A novel bias correction methodology for climate impact simulations. Earth System Dynamics, 7, 71-88. doi:10.5194/esd-7-71-2016.
 #' @author Sebastian Sippel
 #' @examples
-#' data(ensbiascor.example1)
-#' obs.kernel = get.kernel.percentiles(data=ensbiascor.example1$obs.data$Tair[which(ensbiascor.example1$obs.data$Year %in% 1985:2010)])
-#' mod.kernel = get.kernel.percentiles(data=ensbiascor.example1$mod.data$Tair)
-#' plot(ecdf(ensbiascor.example1$obs.data$Tair[which(ensbiascor.example1$obs.data$Year %in% 1985:2010)]), bty='n', xlab = "Observational metric", ylab="Cumulative Density Function", xlim=c(14,25), main="", yaxt="n")
+#' data(ensbiascoR.example1)
+#' obs.kernel = get.kernel.percentiles(data=ensbiascoR.example1$obs.data$Tair[which(ensbiascoR.example1$obs.data$Year %in% 1985:2010)])
+#' mod.kernel = get.kernel.percentiles(data=ensbiascoR.example1$mod.data$Tair)
+#' plot(ecdf(ensbiascoR.example1$obs.data$Tair[which(ensbiascoR.example1$obs.data$Year %in% 1985:2010)]), bty='n', xlab = "Observational metric", ylab="Cumulative Density Function", xlim=c(14,25), main="", yaxt="n")
 #' axis(side=2, las=1)
 #' lines(x = obs.kernel, y=kernel.quantiles, col="blue", lwd=2)
 #' lines(x = mod.kernel, y=kernel.quantiles, col="red", lwd = 2)
@@ -51,8 +51,8 @@ get.kernel.percentiles <- function(data, kernel.quantiles = seq(0, 1, 0.001)) {
 #' @references Sippel, S., Otto, F. E. L., Forkel, M., Allen, M. R., Guillod, B. P., Heimann, M., Reichstein, M., Seneviratne, S. I., Thonicke, K. & Mahecha, M. D. (2016) A novel bias correction methodology for climate impact simulations. Earth System Dynamics, 7, 71-88. doi:10.5194/esd-7-71-2016.
 #' @author Sebastian Sippel
 #' @examples
-#' data(ensbiascor.example1)
-#' cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascor.example1$obs.data$Tair, mod.grid.cell = ensbiascor.example1$mod.data$Tair)
+#' data(ensbiascoR.example1)
+#' cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascoR.example1$obs.data$Tair, mod.grid.cell = ensbiascoR.example1$mod.data$Tair)
 #' plot(x = kernel.quantiles, y = cur.transfer.function(kernel.quantiles), xlab="Observations - CDF", ylab="Model Ensemble - CDF", bty="n", xlim = c(0,1), ylim=c(0, 1), type="n")
 #' lines(x = kernel.quantiles, y = cur.transfer.function(kernel.quantiles), col="red")
 #' lines(x=c(-10^6, 10^6), y=c(-10^6,10^6), col="darkgray", lwd = 2)
@@ -119,10 +119,10 @@ get.percentile.transfer.function <- function(obs.grid.cell, mod.grid.cell, n.sam
 #' @references Sippel, S., Otto, F. E. L., Forkel, M., Allen, M. R., Guillod, B. P., Heimann, M., Reichstein, M., Seneviratne, S. I., Thonicke, K. & Mahecha, M. D. (2016) A novel bias correction methodology for climate impact simulations. Earth System Dynamics, 7, 71-88. doi:10.5194/esd-7-71-2016.
 #' @author Sebastian Sippel
 #' @examples
-#' data(ensbiascor.example1)
-#' cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascor.example1$obs.data$Tair, mod.grid.cell = ensbiascor.example1$mod.data$Tair)
-#' resample.idx_replacement = resample.ensemble(mod.grid.cell = ensbiascor.example1$mod.data$Tair, transfer.function= cur.transfer.function, replacement = T, sample.size=10000)
-#' resample.idx_no_replacement = resample.ensemble(mod.grid.cell = ensbiascor.example1$mod.data$Tair, transfer.function= cur.transfer.function, replacement = F, sample.size=1500, search.radius = 0.5)
+#' data(ensbiascoR.example1)
+#' cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascoR.example1$obs.data$Tair, mod.grid.cell = ensbiascoR.example1$mod.data$Tair)
+#' resample.idx_replacement = resample.ensemble(mod.grid.cell = ensbiascoR.example1$mod.data$Tair, transfer.function= cur.transfer.function, replacement = T, sample.size=10000)
+#' resample.idx_no_replacement = resample.ensemble(mod.grid.cell = ensbiascoR.example1$mod.data$Tair, transfer.function= cur.transfer.function, replacement = F, sample.size=1500, search.radius = 0.5)
 resample.ensemble  <- function(mod.grid.cell, transfer.function, 
                                replacement = T, sample.size = 1500, 
                                quantile.range = c(0, 1), bootstrap.resampling = NULL, 
@@ -241,8 +241,8 @@ resample.ensemble_no_replacement <- function(mod.grid.cell, transfer.function,
 #' @references Sippel, S., Otto, F. E. L., Forkel, M., Allen, M. R., Guillod, B. P., Heimann, M., Reichstein, M., Seneviratne, S. I., Thonicke, K. & Mahecha, M. D. (2016) A novel bias correction methodology for climate impact simulations. Earth System Dynamics, 7, 71-88. doi:10.5194/esd-7-71-2016.
 #' @author Sebastian Sippel
 #' @examples
-#' data(ensbiascor.example1)
-#' cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascor.example1$obs.data$Tair, mod.grid.cell = ensbiascor.example1$mod.data$Tair)
+#' data(ensbiascoR.example1)
+#' cur.transfer.function = get.percentile.transfer.function(obs.grid.cell = ensbiascoR.example1$obs.data$Tair, mod.grid.cell = ensbiascoR.example1$mod.data$Tair)
 #' percentile.ranges = seq(0, 1, 0.1)
 #' text = c("< 10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "> 90")
 #' percentiles.areamean = quality.control.ensemble(transfer.function = cur.transfer.function, percentile.ranges)
